@@ -1,22 +1,49 @@
+
 # Cross-Industry AI Text Classification Engine for Real-Time Sentiment & Intent Detection
 
-This project implements a universal AI-powered NLP system that classifies unstructured text from diverse domains—such as customer support tweets, product reviews, clinical notes, and financial headlines—into actionable categories (sentiment, urgency, topic).
+## Project Overview
 
-Designed to enhance user experiences across multiple devices and platforms, the system leverages Scikit-learn and Hugging Face Transformers (RoBERTa, DistilBERT) for high-accuracy classification. The solution includes preprocessing with spaCy, embedding techniques (TF-IDF, Word2Vec, BERT), multiple model options, and end-to-end deployment via Flask, Streamlit, and Docker.
+This project focuses on building a Universal AI-Powered Text Classification Engine that uses machine learning and NLP to classify unstructured text—such as customer support tickets, reviews, clinical notes, and financial headlines—into sentiment, urgency, or intent. The system is modular, enabling rapid customization for various industry use cases.
 
-##  Features
+---
 
-- Text preprocessing (tokenization, lemmatization, stopword & slang removal)
-- Embedding using TF-IDF, Word2Vec, and RoBERTa
-- ML models: Logistic Regression, Random Forest
-- Transformer models: DistilBERT, RoBERTa
-- Model evaluation: Accuracy, F1 Score, ROC-AUC
-- Deployment via Flask API & Streamlit dashboard
-- Dockerized application with ONNX & Pickle model serialization
+## Goal
 
-## Folder Structure
+To develop reusable ML tools that accurately classify text for real-time decision-making and automation across platforms using models like RoBERTa and Logistic Regression.
 
-```
+---
+
+## Intended Audience
+
+- AI/ML Developers and NLP Engineers  
+- Strategy & Ops Teams (Healthcare, Finance, Retail)  
+- SaaS Product Managers  
+- Customer Support Automation Leads  
+
+---
+
+## Strategy & Pipeline
+
+### I. Preprocessing
+- Tokenization, Lemmatization, Stopword Removal using spaCy  
+- Slang normalization for Twitter data  
+
+### II. Embedding & Feature Extraction
+- TF-IDF for baseline  
+- Word2Vec for semantic context  
+- RoBERTa for transformer embeddings  
+
+### III. Modeling & Training
+- Scikit-learn: Logistic Regression, Random Forest  
+- HuggingFace: DistilBERT, RoBERTa  
+- Evaluation: Accuracy, F1-score, ROC-AUC  
+
+### IV. Deployment Options
+- Flask API for integration  
+- Streamlit dashboard for demo  
+- Docker for containerized deployment  
+
+---
 ai-text-classification/
 ├── app/
 │   ├── flask_app.py
@@ -35,71 +62,66 @@ ai-text-classification/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
-```
 
-##  Installation
+##  Challenges
 
-```bash
-# Clone repository
-git clone https://github.com/yourusername/ai-text-classification.git
-cd ai-text-classification
+- Adapting to diverse domains  
+- Label harmonization across industries  
+- Class imbalance in real-world datasets  
+- Transformer speed optimization  
 
-# Set up virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+---
 
-# Install dependencies
-pip install -r requirements.txt
+## Problem Statement
 
-# Download spaCy model
-python -m spacy download en_core_web_sm
-```
+Can a flexible ML system accurately classify unstructured text across sectors—enhancing triage, reducing manual workload, and accelerating insights?
 
-##  Run the App
-
-### Streamlit
-
-```bash
-streamlit run app/streamlit_app.py
-```
-
-### Flask
-
-```bash
-python app/flask_app.py
-```
-
-##  Model Training
-
-Refer to `notebooks/model_training.ipynb` for:
-- Data loading and preprocessing
-- Embedding (TF-IDF, Word2Vec, RoBERTa)
-- Model training and evaluation
-- Saving models
+---
 
 ##  Dataset
 
-**Kaggle Dataset**: [Customer Support on Twitter](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter)
+- **Source**: [Customer Support on Twitter](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter)  
+- **Attributes**: `tweet_text`, `company`, `intent`, `timestamp`  
+- **Use Cases**: Telecom complaint triage, airline support prioritization, sentiment and topic tagging
 
-Includes tweets labeled by company, sentiment, and topic.
+---
 
-##  Technologies Used
+## Implementation Overview
 
-- Python, pandas, numpy, scikit-learn
-- spaCy, gensim, transformers (Hugging Face)
-- Flask, Streamlit, Docker
-- Pickle, ONNX, Torch
+- Text preprocessing with spaCy  
+- Intent and sentiment labeling  
+- Baseline model: TF-IDF + Random Forest  
+- Advanced model: RoBERTa fine-tuning  
+- Deployed via Flask API and Streamlit  
+- Dockerized for scalable deployment  
 
-##  Future Enhancements
+---
 
-- Add LangChain & RAG for question answering
-- Enable model retraining on live data
-- Integrate with Slack or Zendesk APIs for real-time classification
+##  Results
 
-##  References
+- Logistic Regression (TF-IDF): F1 ≈ 0.83, ROC-AUC ≈ 0.81  
+- RoBERTa Transformer: F1 ≈ 0.89, ROC-AUC ≈ 0.92  
+- Streamlit interface for real-time predictions  
+- Confusion matrix + ROC curves provided for transparency  
 
-- [Transformers – Hugging Face](https://huggingface.co/transformers/)
-- [CardiffNLP RoBERTa](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)
-- [Kaggle Dataset](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter)
-- [Streamlit Documentation](https://docs.streamlit.io/)
-- [Docker](https://docs.docker.com/)
+---
+
+##  Conceptual Enhancement
+
+**LangChain + RAG**
+
+Enable enterprise chatbots to ask:
+> “What are the top complaints this month by airline customers?”
+
+Use Retrieval-Augmented Generation to pull answers from vector databases + real-time model predictions.
+
+---
+
+## References
+
+- [Hugging Face Transformers](https://huggingface.co/transformers/)  
+- [CardiffNLP RoBERTa](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)  
+- [Streamlit Docs](https://docs.streamlit.io/)  
+- [Docker Deployment](https://docs.docker.com/)  
+- [Kaggle Dataset](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter)  
+
